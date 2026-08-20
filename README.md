@@ -1,58 +1,223 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ✈️ TravelMate
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**TravelMate** is a web application for planning and managing trips, developed with **PHP and Laravel**.
 
-## About Laravel
+The application allows users to organise their trips, manage places they want to visit, classify them into categories, add notes and visualise locations on an interactive map.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The project was developed as a practical full-stack application, focusing on MVC architecture, relational data modelling, authentication, authorisation and CRUD operations.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📸 Screenshots
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Trip management
 
-## Learning Laravel
+![TravelMate trip management](docs/screenshots/TravelMate1.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Trip details and interactive map
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![TravelMate trip details](docs/screenshots/TravelMate2.png)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## ✨ Features
 
-## Agentic Development
+- User registration and authentication
+- Personal trip management
+- Create, edit and delete trips
+- Manage places associated with each trip
+- Mark places as visited
+- Organise places using custom categories
+- Add notes to trips
+- Interactive maps with Leaflet and OpenStreetMap
+- Location search and geographic coordinates
+- Links to locations in Google Maps
+- User-specific data protection
+- Form validation and error handling
+- Responsive web interface
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🛠️ Technologies
 
-```bash
-composer require laravel/boost --dev
+### Backend
+- PHP
+- Laravel
+- Laravel Eloquent ORM
+- Laravel Breeze
 
-php artisan boost:install
+### Frontend
+- Blade
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+- Vite
+
+### Maps and geolocation
+- Leaflet
+- OpenStreetMap
+- Nominatim
+
+### Database
+- MySQL
+
+### Development and testing
+- Composer
+- npm
+- Git
+- PHPUnit / Laravel Feature Tests
+
+## 🏗️ Architecture
+
+TravelMate follows Laravel's **MVC architecture**:
+
+```text
+Browser
+   │
+   ▼
+Routes
+   │
+   ▼
+Controllers
+   │
+   ▼
+Models / Eloquent ORM
+   │
+   ▼
+MySQL Database
+
+Controllers
+   │
+   ▼
+Blade Views
+   │
+   ▼
+HTML / CSS / JavaScript
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+The main domain entities are:
 
-## Contributing
+- **Trip** — represents a user's trip
+- **Place** — locations associated with a trip
+- **Category** — user-defined categories for organising places
+- **Note** — notes associated with trips
+- **User** — authenticated application users
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Relationships between these entities are managed using **Eloquent ORM**.
 
-## Code of Conduct
+## 🔐 Authentication and authorisation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The application includes user registration, login and profile management.
 
-## Security Vulnerabilities
+Resources are associated with individual users, and access control is applied so users can only manage their own trips, categories, places and notes.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🗺️ Maps and location management
 
-## License
+TravelMate integrates **Leaflet and OpenStreetMap** to display trip locations on an interactive map.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Places can store geographic coordinates and are represented using map markers. Location search is integrated using OpenStreetMap's **Nominatim** service.
+
+## 🧪 Testing
+
+The project includes Laravel feature tests covering authentication and user account functionality.
+
+Current test suite:
+
+- **25 tests**
+- **61 assertions**
+
+Tests can be executed with:
+
+```bash
+php artisan test
+```
+
+## 🚀 Running the project
+
+### Requirements
+
+- PHP
+- Composer
+- Node.js / npm
+- MySQL
+
+Clone the repository:
+
+```bash
+git clone https://github.com/JosepRC80/TravelMate.git
+cd TravelMate
+```
+
+Install PHP dependencies:
+
+```bash
+composer install
+```
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+Create the environment configuration:
+
+```bash
+cp .env.example .env
+```
+
+On Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+Configure your database connection in `.env`, then run:
+
+```bash
+php artisan migrate
+```
+
+Start the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+In a second terminal, start Vite:
+
+```bash
+npm run dev
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
+
+## 🎯 What I worked on
+
+This project allowed me to practise and consolidate:
+
+- Full-stack web application development
+- PHP and Laravel
+- MVC architecture
+- CRUD operations
+- Relational database modelling
+- Eloquent ORM and model relationships
+- Authentication and authorisation
+- Request validation
+- Resource ownership and access control
+- Blade templates
+- JavaScript integration
+- Interactive maps and external services
+- Git-based version control
+- Feature testing
+
+## 👤 Author
+
+**Josep Riego Cladera**
+
+Developed as a personal project and as part of my learning in Web Application Development.
