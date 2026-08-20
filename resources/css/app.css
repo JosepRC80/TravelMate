@@ -1,9 +1,282 @@
-@import 'tailwindcss';
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+:root {
+    --tm-primary: #1e6fd9;
+    --tm-primary-dark: #1557ad;
+    --tm-primary-soft: #eaf3ff;
+    --tm-accent: #f59e0b;
+
+    --tm-text: #172033;
+    --tm-muted: #6b7280;
+
+    --tm-bg: #f5f7fb;
+    --tm-surface: #ffffff;
+    --tm-border: #e5e7eb;
+
+    --tm-success: #198754;
+    --tm-danger: #dc3545;
+
+    --tm-radius: 16px;
+    --tm-radius-sm: 10px;
+
+    --tm-shadow:
+        0 8px 28px rgba(23, 32, 51, 0.08);
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--tm-bg);
+    color: var(--tm-text);
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    min-height: calc(100vh - 64px);
+}
+
+.tm-app-shell {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top right,
+            rgba(30, 111, 217, 0.08),
+            transparent 26rem),
+        var(--tm-bg);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Navegació
+|--------------------------------------------------------------------------
+*/
+
+.tm-navbar {
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--tm-border);
+    box-shadow: 0 2px 14px rgba(23, 32, 51, 0.04);
+    backdrop-filter: blur(12px);
+}
+
+.tm-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--tm-text);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.tm-brand:hover {
+    color: var(--tm-primary);
+}
+
+.tm-brand-icon {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg,
+            var(--tm-primary),
+            #4b91ec);
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(30, 111, 217, 0.24);
+}
+
+.tm-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
+    color: var(--tm-muted);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.tm-nav-link:hover {
+    color: var(--tm-primary);
+    background-color: var(--tm-primary-soft);
+}
+
+.tm-nav-link.is-active {
+    color: var(--tm-primary);
+    background-color: var(--tm-primary-soft);
+    font-weight: 600;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Capçalera de pàgina
+|--------------------------------------------------------------------------
+*/
+
+.tm-page-heading {
+    background-color: transparent;
+    border-bottom: 0;
+}
+
+.tm-page-heading-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 2rem 0.75rem 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Targetes
+|--------------------------------------------------------------------------
+*/
+
+.card {
+    border-radius: var(--tm-radius);
+}
+
+.card.shadow-sm {
+    box-shadow: var(--tm-shadow) !important;
+}
+
+.card-header {
+    border-top-left-radius: var(--tm-radius) !important;
+    border-top-right-radius: var(--tm-radius) !important;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Botons
+|--------------------------------------------------------------------------
+*/
+
+.btn {
+    border-radius: var(--tm-radius-sm);
+    font-weight: 500;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    border-color: var(--tm-primary);
+    background-color: var(--tm-primary);
+    box-shadow: 0 6px 14px rgba(30, 111, 217, 0.18);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    border-color: var(--tm-primary-dark);
+    background-color: var(--tm-primary-dark);
+}
+
+.btn-outline-primary {
+    border-color: var(--tm-primary);
+    color: var(--tm-primary);
+}
+
+.btn-outline-primary:hover {
+    border-color: var(--tm-primary);
+    background-color: var(--tm-primary);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Formularis
+|--------------------------------------------------------------------------
+*/
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border-color: var(--tm-border);
+    border-radius: var(--tm-radius-sm);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(30, 111, 217, 0.6);
+    box-shadow: 0 0 0 0.2rem rgba(30, 111, 217, 0.12);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Missatges i taules
+|--------------------------------------------------------------------------
+*/
+
+.alert {
+    border: 0;
+    border-radius: var(--tm-radius-sm);
+}
+
+.table {
+    --bs-table-bg: transparent;
+}
+
+.table> :not(caption)>*>* {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom-color: var(--tm-border);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Utilitats TravelMate
+|--------------------------------------------------------------------------
+*/
+
+.tm-text-muted {
+    color: var(--tm-muted);
+}
+
+.tm-section-label {
+    color: var(--tm-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.tm-icon-circle {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background-color: var(--tm-primary-soft);
+    color: var(--tm-primary);
+}
+
+@media (max-width: 767.98px) {
+    .tm-page-heading-inner {
+        padding-top: 1.25rem;
+    }
+
+    .container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
 }
